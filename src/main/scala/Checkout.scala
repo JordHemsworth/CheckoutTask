@@ -5,8 +5,11 @@ object Checkout {
     val numOfOranges = shoppingList.count(_ == "Orange")
     val numberOfApples = shoppingList.count(_ == "Apple")
 
-    val totalOrangePrice: Double = numOfOranges * Orange.price
-    val totalApplePrice: Double = numberOfApples * Apple.price
+    val discountedOranges: Int = numOfOranges / 3
+    val discountedApples: Int = numberOfApples / 2
+
+    val totalOrangePrice = (numOfOranges - discountedOranges) * Orange.price
+    val totalApplePrice = (numberOfApples - discountedApples) * Apple.price
 
     val totalCost: Double = totalOrangePrice + totalApplePrice
 

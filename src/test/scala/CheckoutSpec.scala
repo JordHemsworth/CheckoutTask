@@ -18,4 +18,34 @@ class CheckoutSpec extends AnyFunSuite {
     val totalPrice = Checkout.CheckPrices(shoppingList)
     assert(totalPrice == 0.85)
   }
+
+  test("Checkout calculates the correct price with BOGOF on odd amount of Apples") {
+    val shoppingList: List[String] = List("Apple", "Apple", "Apple")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 1.20)
+  }
+
+  test("Checkout calculates the correct price with BOGOF on even amount of Apples") {
+    val shoppingList: List[String] = List("Apple", "Apple", "Apple", "Apple")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 1.20)
+  }
+
+  test("Checkout calculates the correct price with 3 for 2 on odd Oranges") {
+    val shoppingList: List[String] = List("Orange", "Orange", "Orange")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 0.50)
+  }
+
+  test("Checkout calculates the correct price with 3 for 2 on even Oranges") {
+    val shoppingList: List[String] = List("Orange", "Orange", "Orange", "Orange")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 0.75)
+  }
+
+  test("Checkout calculates the correct price when using both discounts") {
+    val shoppingList: List[String] = List("Orange", "Orange", "Orange", "Apple", "Apple")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 1.10)
+  }
 }
