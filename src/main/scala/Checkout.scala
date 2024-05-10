@@ -22,7 +22,7 @@ object Checkout {
     orangeCount
   }
 
-  def applyDiscount(numOfOranges: Int, numberOfApples: Int): Double = {
+  private def applyDiscount(numOfOranges: Int, numberOfApples: Int): Double = {
     val discountedOranges: Int = numOfOranges / 3
     val discountedApples: Int = numberOfApples / 2
 
