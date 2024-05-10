@@ -48,4 +48,22 @@ class CheckoutSpec extends AnyFunSuite {
     val totalPrice = Checkout.CheckPrices(shoppingList)
     assert(totalPrice == 1.10)
   }
+
+  test("Checkout removes white space from string and returns right price") {
+    val shoppingList: List[String] = List("Orange ", "Orange ", "Orange ", "Apple ", "Apple  ")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 1.10)
+  }
+
+  test("Checkout returns right price when fruit names have different capitalization ") {
+    val shoppingList: List[String] = List("orange", "orange", "Orange", "apple", "Apple")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 1.10)
+  }
+
+  test("Checkout returns right price when fruit names have different capitalization and removes white space") {
+    val shoppingList: List[String] = List("Orange  ", "orange", "Orange  ", "apple", "Apple  ")
+    val totalPrice = Checkout.CheckPrices(shoppingList)
+    assert(totalPrice == 1.10)
+  }
 }
